@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Beck IT Supportbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="chat-container">
+        <h1>Beck IT Supportbot</h1>
+
+        <section id="chatBox" class="chat-box">
+            <div class="message bot-message">
+                <div class="message-header">Beck IT Supportbot</div>
+                <div>Hej. Jeg er Beck IT supportbotten. Hvad kan jeg hjælpe med?</div>
+            </div>
+        </section>
+
+        <form id="chatForm" class="chat-form">
+            <input id="questionInput"
+                   type="text"
+                   placeholder="Skriv dit spørgsmål her..."
+                   autocomplete="off" />
+
+            <button type="submit">Send</button>
+
+            <button type="button" onclick="clearChatHistory()">
+                Ryd chat
+            </button>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

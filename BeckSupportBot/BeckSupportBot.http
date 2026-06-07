@@ -1,0 +1,6 @@
+@BeckSupportBot_HostAddress = http://localhost:5216
+
+GET {{BeckSupportBot_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
