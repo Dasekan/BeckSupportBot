@@ -1,140 +1,110 @@
 # Beck Support Bot
 
-## Beskrivelse
+## Description
 
-Beck Support Bot er en ASP.NET Core Web API udviklet i C#, som fungerer som en AI-drevet supportassistent. Projektet kombinerer OpenAI's GPT-model med en lokal vidensbase for at levere præcise svar på spørgsmål om BridgeCentral, BridgeMate og BC3-databasen.
+Beck Support Bot is an AI-powered support application built with ASP.NET Core Web API and the OpenAI API.
 
-I stedet for kun at sende brugerens spørgsmål direkte til en sprogmodel søger applikationen først efter relevante dokumenter i en intern vidensbase. De mest relevante informationer sendes derefter sammen med spørgsmålet til OpenAI, hvilket giver mere præcise og kontekstbaserede svar.
+The application combines a local knowledge base with OpenAI's language models to provide accurate and context-aware answers to user questions. Before sending a request to the AI model, the application searches relevant documentation and includes it as context, improving the quality and reliability of the generated responses.
+
+The project demonstrates how Retrieval-Augmented Generation (RAG) concepts can be implemented in a .NET application to create an intelligent support assistant.
 
 ---
 
-## Funktioner
+## Features
 
-- AI-baseret support via OpenAI GPT
-- REST API udviklet med ASP.NET Core
-- Automatisk søgning i lokal vidensbase
-- Relevansbaseret udvælgelse af dokumenter
-- Swagger/OpenAPI til test af API
+- AI-powered support assistant
+- OpenAI API integration
+- Local knowledge base
+- Context-aware AI responses
+- REST API
+- Swagger / OpenAPI
 - Dependency Injection
-- Struktureret Service Layer
-- Fejlhåndtering og validering
+- Error handling
+- JSON communication
 
 ---
 
-## Teknologier
+## Technologies
 
+### Backend
 - C#
 - .NET 8
 - ASP.NET Core Web API
-- OpenAI API
-- Swagger / OpenAPI
+- Entity Framework Core
 - Dependency Injection
-- JSON
+
+### AI
+- OpenAI API
+- Prompt Engineering
+- Context Retrieval
+- Retrieval-Augmented Generation (RAG)
+
+### Other Technologies
 - REST API
+- JSON
+- Swagger / OpenAPI
 
 ---
 
-## Projektstruktur
+## Project Structure
 
-```
+```text
 BeckSupportBot
 │
 ├── Controllers
-│   └── ChatController
-│
 ├── Interfaces
-│
-├── Services
-│   ├── OpenAiService
-│   └── KnowledgeService
-│
 ├── Models
-│
+├── Services
 ├── KnowledgeBase
-│   ├── BridgeCentral
-│   ├── BridgeMate
-│   ├── Database
-│   └── Skifteplaner
-│
+├── wwwroot
 ├── Program.cs
 └── appsettings.json
 ```
 
 ---
 
-## Hvordan fungerer projektet?
+## How It Works
 
-1. Brugeren sender et spørgsmål til API'et.
-2. KnowledgeService søger i den lokale vidensbase efter relevante dokumenter.
-3. De mest relevante dokumenter samles som kontekst.
-4. Konteksten sendes sammen med spørgsmålet til OpenAI.
-5. GPT genererer et svar baseret på både brugerens spørgsmål og den fundne dokumentation.
-6. API'et returnerer svaret som JSON.
+1. A user submits a question through the API.
+2. The Knowledge Service searches the local knowledge base for relevant documentation.
+3. The most relevant documents are selected and combined into a context.
+4. The context and the user's question are sent to the OpenAI API.
+5. The AI generates a response based on both the question and the retrieved documentation.
+6. The API returns the response as JSON.
 
----
-
-## API Endpoint
-
-### POST
-
-```
-POST /api/chat
-```
-
-Eksempel på request:
-
-```json
-{
-    "question": "Hvordan installerer jeg BridgeCentral?"
-}
-```
-
-Eksempel på response:
-
-```json
-{
-    "answer": "...",
-    "contextUsed": [
-        {
-            "title": "...",
-            "category": "...",
-            "score": 4
-        }
-    ]
-}
-```
+This approach improves answer accuracy by grounding the AI in domain-specific documentation rather than relying solely on the language model.
 
 ---
 
 ## Installation
 
-Klon projektet
+Clone the repository
 
 ```bash
 git clone https://github.com/Dasekan/BeckSupportBot.git
 ```
 
-Gå til projektmappen
+Navigate to the project
 
 ```bash
 cd BeckSupportBot
 ```
 
-Installer dependencies
+Restore NuGet packages
 
 ```bash
 dotnet restore
 ```
 
-Tilføj din OpenAI API-nøgle via User Secrets eller appsettings.
+Configure your OpenAI API key in **appsettings.json** or using **User Secrets**.
 
-Start projektet
+Run the application
 
 ```bash
 dotnet run
 ```
 
-Swagger kan herefter åbnes på
+Open Swagger
 
 ```
 https://localhost:xxxx/swagger
@@ -142,37 +112,43 @@ https://localhost:xxxx/swagger
 
 ---
 
-## Mulige forbedringer
+## Skills Demonstrated
 
-- Semantic Search med embeddings
-- Vector Database
-- Caching af AI-svar
-- Unit Tests
-- Docker support
-- Authentication og API Keys
-- Logging og monitorering
-
----
-
-## Kompetencer demonstreret
-
-Dette projekt demonstrerer erfaring med:
+This project demonstrates experience with:
 
 - ASP.NET Core Web API
-- Objektorienteret programmering
-- Service Layer Architecture
-- Dependency Injection
-- REST API design
+- REST API development
 - OpenAI API integration
-- Dokumentbaseret informationssøgning
-- JSON-kommunikation
-- Exception Handling
+- AI-assisted software development
+- Retrieval-Augmented Generation (RAG)
+- Dependency Injection
+- Object-Oriented Programming
+- JSON communication
+- Knowledge retrieval
+- Prompt Engineering
+- Error handling
 
 ---
 
-## Udviklet af
+## Future Improvements
 
-**Dasekan**
+- Semantic Search using Embeddings
+- Vector Database integration
+- Authentication & Authorization
+- Response caching
+- Docker support
+- Unit Tests
+- Logging & Monitoring
+- Azure deployment
 
-GitHub:
-https://github.com/Dasekan
+---
+
+## Purpose
+
+The purpose of this project was to explore how AI can be integrated into modern .NET applications by combining a large language model with a local knowledge base. The project focuses on building a scalable and maintainable support assistant capable of delivering accurate, context-aware responses.
+
+---
+
+## Developed by
+
+**Dasekan Allan Karim**
